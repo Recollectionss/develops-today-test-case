@@ -3,6 +3,8 @@ import { PostgresModule } from './modules/postgres/postgres.module';
 import { CountryModule } from './modules/country/country.module';
 import { NagerApiModule } from './modules/nager-api/nager-api.module';
 import { CountryShowApiModule } from './modules/country-show-api/country-show-api.module';
+import { UserModule } from './modules/user/user.module';
+import { CalendarEventModule } from './modules/calendar-event/calendar-event.module';
 
 @Module({
   imports: [
@@ -10,6 +12,8 @@ import { CountryShowApiModule } from './modules/country-show-api/country-show-ap
     CountryModule,
     NagerApiModule,
     CountryShowApiModule,
+    UserModule,
+    CalendarEventModule,
   ],
   controllers: [],
   providers: [],

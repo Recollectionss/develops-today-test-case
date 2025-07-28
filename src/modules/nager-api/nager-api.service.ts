@@ -1,4 +1,8 @@
-import {Inject, Injectable, InternalServerErrorException} from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import nagerApiConfig from '../../config/nager-api.config';
 import { ConfigType } from '@nestjs/config';
 import { CountryDto } from '../../shared/dto/country.dto';
@@ -16,7 +20,9 @@ export class NagerApiService {
     try {
       return this.fetch(this.api.nager_api + 'AvailableCountries');
     } catch (error) {
-      throw new InternalServerErrorException(`Nager API error: ${error.message}`);
+      throw new InternalServerErrorException(
+        `Nager API error: ${error.message}`,
+      );
     }
   }
 
@@ -24,7 +30,9 @@ export class NagerApiService {
     try {
       return this.fetch(this.api.nager_api + `CountryInfo/${code}`);
     } catch (error) {
-      throw new InternalServerErrorException(`Nager API error: ${error.message}`);
+      throw new InternalServerErrorException(
+        `Nager API error: ${error.message}`,
+      );
     }
   }
 

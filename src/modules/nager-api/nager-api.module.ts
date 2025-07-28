@@ -6,5 +6,6 @@ import nagerApiConfig from '../../config/nager-api.config';
 @Module({
   imports: [ConfigModule.forRoot({ load: [nagerApiConfig] })],
   providers: [NagerApiService],
+  exports: [NagerApiService],
 })
 export class NagerApiModule {}

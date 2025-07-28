@@ -24,11 +24,12 @@ export class CountryShowApiService {
 
   async getFlag(country: string): Promise<string> {
     try {
-      return await this.fetch(
+      const flag = await this.fetch(
         `${this.api.country_show_api}flag/images`,
         'POST',
         { country },
       );
+      return flag?.data?.flag;
     } catch (error) {
       throw new Error(`Country Show API error: ${error.message}`);
     }

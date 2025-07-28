@@ -1,5 +1,5 @@
 > ⚠️ **Warning**  
-> This repository contains two shell scripts: `generate_keys.sh` and `int_db.sh`.  
+> This repository contains two shell script: `int_db.sh`.  
 > Please review their contents before executing, as they can modify your system environment or database.
 
 

@@ -3,6 +3,8 @@ import appConfig from '../../config/app.config';
 import { ConfigType } from '@nestjs/config';
 import { POSTGRES, SEQUELIZE } from './constants';
 import { Sequelize } from 'sequelize-typescript';
+import { User } from '../user/entity/user.entity';
+import { CalendarEvent } from '../calendar-event/entity/calendar-event.entity';
 
 export const postgresProviders = [
   {
@@ -22,7 +24,7 @@ export const postgresProviders = [
         password: postgresConf.pass,
       });
 
-      sequelize.addModels([]);
+      sequelize.addModels([User, CalendarEvent]);
 
       if (appConf.node_dev === 'testing') {
         await sequelize.sync({ force: true });

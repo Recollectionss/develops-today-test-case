@@ -1,4 +1,8 @@
-import { Inject, Injectable } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import countryShowApi from '../../config/country-show-api';
 import { ConfigType } from '@nestjs/config';
 import { PopulationDto } from '../../shared/dto/population-data.dto';
@@ -18,7 +22,9 @@ export class CountryShowApiService {
         { country },
       );
     } catch (error) {
-      throw new Error(`Country Show API error: ${error.message}`);
+      throw new InternalServerErrorException(
+        `Country Show API error: ${error.message}`,
+      );
     }
   }
 
@@ -31,7 +37,9 @@ export class CountryShowApiService {
       );
       return flag?.data?.flag;
     } catch (error) {
-      throw new Error(`Country Show API error: ${error.message}`);
+      throw new InternalServerErrorException(
+        `Country Show API error: ${error.message}`,
+      );
     }
   }
 
@@ -52,7 +60,9 @@ export class CountryShowApiService {
     const res = await fetch(url, options);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch: ${res.statusText}`);
+      throw new InternalServerErrorException(
+        `Failed to fetch: ${res.statusText}`,
+      );
     }
 
     return await res.json();

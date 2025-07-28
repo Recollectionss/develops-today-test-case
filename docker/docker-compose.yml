@@ -1,0 +1,36 @@
+name: develops-today-test-case
+
+services:
+  develops-today-node:
+    container_name: genesis-node
+    env_file: .env
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - '${APP_PORT}:${APP_PORT}'
+    command: sh -c "npm run migration:up && npm run start:prod"
+    networks:
+      - app-network
+
+  develops-today-postgres:
+    container_name: genesis-postgres
+    image: postgres:16.3
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file: .env
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data: {}

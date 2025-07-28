@@ -12,7 +12,6 @@ export const postgresProviders = [
       postgresConf: ConfigType<typeof postgresConfig>,
       appConf: ConfigType<typeof appConfig>,
     ) => {
-
       const sequelize = new Sequelize({
         logging: console.log,
         dialect: POSTGRES,
